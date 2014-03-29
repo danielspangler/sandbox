@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+    echo "Expected the name of the remote to add as a parameter."
+    exit 1
+fi
+THEREMOTE=$1
+THEURL=`git config --get remote.origin.url`
+MODURL=`echo $THEURL | sed "s/\(.*:\)\([a-zA-Z]*\)\(\/.*\)/\1${THEREMOTE}\3/"`
+
+echo "Executing 'git remote add $THEREMOTE $MODURL'"
+
+git remote add $THEREMOTE $MODURL 
+
