@@ -15,6 +15,6 @@ if [ ! -z "$2" ]; then
 fi
 echo "Executing 'git remote add $THEREMOTE $MODURL'"
 
-#git remote add $THEREMOTE $MODURL 
+git remote add $THEREMOTE $MODURL 
 
 
