@@ -1,14 +1,20 @@
 #!/bin/bash
 
-if [ "$#" -ne 1 ]; then
-    echo "Expected the name of the remote to add as a parameter."
+if [ "$#" -ne 1 ] && [ "$#" -ne 2 ]; then
+    echo "Usage: add-remote <remote github user> <optional alias>"
     exit 1
 fi
 THEREMOTE=$1
 THEURL=`git config --get remote.origin.url`
 MODURL=`echo $THEURL | sed "s/\(.*:\)\([a-zA-Z]*\)\(\/.*\)/\1${THEREMOTE}\3/"`
 
+
+
+if [ ! -z "$2" ]; then
+	THEREMOTE=$2	
+fi
 echo "Executing 'git remote add $THEREMOTE $MODURL'"
 
-git remote add $THEREMOTE $MODURL 
+#git remote add $THEREMOTE $MODURL 
+
 
